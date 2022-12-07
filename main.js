@@ -18,14 +18,14 @@ window.onload = () => {
 
     for(let i = 0; i < numbers.length; i++){
         numbers[i].addEventListener('click',(e) =>{
-            sign_fade()
-            let atr = e.target.getAttribute('value')
+                sign_fade()
+                let atr = e.target.getAttribute('value')
 
-            if(isFirstValue === false){
-                getFirstValue(atr)
-            }else{
-                getSecondValue(atr)
-            }
+                if(isFirstValue === false){
+                    getFirstValue(atr)
+                }else{
+                    getSecondValue(atr)
+                }
             // if(isSecondValue === false){
             //     getSecondValue(atr)
             // }
@@ -33,12 +33,12 @@ window.onload = () => {
     }
 
     function getFirstValue(el) {
-        result.innerHTML = ''
-        if(parseInt(el)>=0 && parseInt(el)<=9 ){
-            firstValue += el
-            result.innerHTML = firstValue
-            //unary plus operator(+) -> convert to a number
-            firstValue = +firstValue
+        // result.innerHTML = ''
+        if( parseInt(el)>=0 && parseInt(el)<=9 ){
+                firstValue += el
+                result.innerHTML = firstValue
+                //unary plus operator(+) -> convert to a number
+                firstValue = +firstValue
         }else{
             return
         }
@@ -46,11 +46,19 @@ window.onload = () => {
 
     function getSecondValue(el) {
         if(firstValue != '' && sign != ''){
-            if(parseInt(el)>=0 && parseInt(el)<=9 ){
+            if( parseInt(el)>=0 && parseInt(el)<=9 ){
                 secondValue += el
                 result.innerHTML = secondValue
                 secondValue = +secondValue
             }
+        }
+        if(sign === ''){
+            firstValue = ''
+            isFirstValue = false
+            secondValue = ''
+            isSecondValue = false
+            sign = ''
+            resultValue = 0
         }
     }
 
@@ -184,6 +192,7 @@ window.onload = () => {
             result.innerHTML = resultValue
             firstValue = resultValue
             secondValue = ''
+            sign = ''
 
             checkResultLength()
         }
