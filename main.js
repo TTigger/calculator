@@ -12,7 +12,6 @@ window.onload = () => {
     let firstValue = ''
     let isFirstValue = false
     let secondValue = ''
-    let isSecondValue = false
     let sign = ''
     let resultValue = 0
 
@@ -26,14 +25,10 @@ window.onload = () => {
                 }else{
                     getSecondValue(atr)
                 }
-            // if(isSecondValue === false){
-            //     getSecondValue(atr)
-            // }
         })
     }
 
     function getFirstValue(el) {
-        // result.innerHTML = ''
         if( parseInt(el)>=0 && parseInt(el)<=9 ){
                 firstValue += el
                 result.innerHTML = firstValue
@@ -54,11 +49,8 @@ window.onload = () => {
         }
         if(sign === ''){
             firstValue = ''
-            isFirstValue = false
-            secondValue = ''
-            isSecondValue = false
-            sign = ''
             resultValue = 0
+            getFirstValue(el)
         }
     }
 
@@ -174,7 +166,7 @@ window.onload = () => {
             firstValue = ''
             isFirstValue = false
             secondValue = ''
-            isSecondValue = false
+            
             sign = ''
             resultValue = 0
         }else{
@@ -246,14 +238,13 @@ window.onload = () => {
         firstValue = ''
         isFirstValue = false
         secondValue = ''
-        isSecondValue = false
+        
         sign = ''
         resultValue = 0
     })
 
     dot.addEventListener('click',() =>{
         sign_fade()
-        // result.innerHTML = ''
 
         //check there exist a dot in resultValue or not
         let check_result = resultValue.toString()
