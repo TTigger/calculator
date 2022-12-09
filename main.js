@@ -30,10 +30,8 @@ window.onload = () => {
 
     function getFirstValue(el) {
         if( parseInt(el)>=0 && parseInt(el)<=9 ){
-                firstValue += el
-                result.innerHTML = firstValue
-                //unary plus operator(+) -> convert to a number
-                firstValue = +firstValue
+            firstValue += el
+            result.innerHTML = firstValue
         }else{
             return
         }
@@ -44,7 +42,6 @@ window.onload = () => {
             if( parseInt(el)>=0 && parseInt(el)<=9 ){
                 secondValue += el
                 result.innerHTML = secondValue
-                secondValue = +secondValue
             }
         }
         if(sign === ''){
@@ -59,18 +56,18 @@ window.onload = () => {
             signs[i].addEventListener('click',(e) =>{
                 sign = e.target.getAttribute('value')
                 isFirstValue = true
+                firstValue = +firstValue
 
                 //連加
                 if(secondValue != ''){
-                    // result.innerHTML = ''
                     if(sign === '+'){
-                        resultValue = firstValue + secondValue
+                        resultValue = firstValue + +secondValue
                     }else if(sign === '-'){
-                        resultValue = firstValue - secondValue
+                        resultValue = firstValue - +secondValue
                     }else if(sign === 'x'){
-                        resultValue = firstValue * secondValue
+                        resultValue = firstValue * +secondValue
                     }else if(sign === '÷'){
-                        resultValue = firstValue / secondValue
+                        resultValue = firstValue / +secondValue
                     }
                     result.innerHTML = resultValue
                     firstValue = resultValue
@@ -173,13 +170,13 @@ window.onload = () => {
             sign_fade()
             result.innerHTML = ''
             if(sign === '+'){
-                resultValue = firstValue + secondValue
+                resultValue = firstValue + +secondValue
             }else if(sign === '-'){
-                resultValue = firstValue - secondValue
+                resultValue = firstValue - +secondValue
             }else if(sign === 'x'){
-                resultValue = firstValue * secondValue
+                resultValue = firstValue * +secondValue
             }else if(sign === '÷'){
-                resultValue = firstValue / secondValue
+                resultValue = firstValue / +secondValue
             }
             result.innerHTML = resultValue
             firstValue = resultValue
@@ -247,9 +244,9 @@ window.onload = () => {
         sign_fade()
 
         //check there exist a dot in resultValue or not
-        let check_result = resultValue.toString()
         let check_first = firstValue.toString()
         let check_second = secondValue.toString()
+        let check_result = resultValue.toString()
 
         if(check_first.includes('.') && check_second === ''){
             return
@@ -257,7 +254,6 @@ window.onload = () => {
         if(check_second.includes('.')){
             return
         }
-
 
         if(!check_result.includes('.')){
             resultValue = firstValue + '.'
